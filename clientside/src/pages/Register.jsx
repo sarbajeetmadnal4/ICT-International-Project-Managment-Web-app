@@ -11,6 +11,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Autocomplete from '@mui/material/Autocomplete';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import { theme } from '../context/themes'
 
 const Register = () => {
     return (
@@ -26,6 +31,7 @@ const Register = () => {
             >
                 <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                 </Avatar>
+
                 <Typography component="h1" variant="h5">
                     Register New
                 </Typography>
@@ -53,8 +59,9 @@ const Register = () => {
                         id="password"
                         autoComplete="current-password"
                     />
+
                     <TextField
-                        sx={{ my: '1rem' }}
+                        margin='normal'
                         required
                         fullWidth
                         name="password"
@@ -64,28 +71,47 @@ const Register = () => {
                         autoComplete="current-password"
                     />
 
-                    <Autocomplete
+                    {/* <Autocomplete
                         disablePortal
                         id="combo-box-demo"
                         options={['Sales Department', 'Account', 'Production']}
                         sx={{ width: '100%', my: '1rem' }}
                         renderInput={(params) => <TextField {...params} label="Select Role" />}
-                    />
+                    /> */}
+
+                    <FormControl fullWidth sx={{my:'1rem'}}>
+                        <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Role"
+                        >
+                            <MenuItem value={"Sales"}>Sales</MenuItem>
+                            <MenuItem value={"Account"}>Account</MenuItem>
+                            <MenuItem value={"Production"}>Production</MenuItem>
+                        </Select>
+                    </FormControl>
 
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
                     />
+
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
+                        sx={{
+                            mt: 3, mb: 2, bgcolor: 'primary.main',
+                            ":hover": {
+                                bgcolor: 'primary.hoverColor'
+                            }
+                        }}
                         onClick={(e) => {
                             e.preventDefault()
                         }}
                     >
-                        Sign In
+                        Register
                     </Button>
 
                     <Grid container>
